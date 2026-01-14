@@ -554,6 +554,7 @@
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             padding: 8px;
             margin-top: 8px;
+            z-index: 1000;
         }
 
         .dropdown:hover .dropdown-menu {
@@ -780,7 +781,7 @@
     <!-- Announcement Bar -->
     <div id="announcementBar" class="announcement-bar">
         <div class="announcement-content">
-        <span>🎉 Exciting News: Visit AI Everything Egypt for the latest in AI innovation!</span>
+        <img src="https://www.aieverythingegypt.com/wp-content/uploads/2023/02/ai-everything-logo-white-retina.png" alt="AI Everything" style="height: 28px; margin-right: 8px; vertical-align: middle; filter: brightness(1.1);" onerror="this.style.display='none'"><span>Exciting News: Visit AI Everything Middle East and Africa 2026 for the latest in AI innovation!</span>
             <a href="https://www.aieverythingegypt.com/home" target="_blank" rel="noopener noreferrer" class="announcement-link" onclick="triggerConfetti(event)">VISIT NOW →</a>
         </div>
         <button class="announcement-close" onclick="closeAnnouncement()">×</button>
@@ -864,8 +865,8 @@
                     <li class="dropdown @if(str(Route::current()->getName())->contains('community')) active @endif">
                         <a href="{{ route('community') }}" class="dropdown-toggle">@lang('translation.community')</a>
                         <div class="dropdown-menu">
-                            <a href="{{ route('communities') }}">@lang('translation.researchers')</a>
-                            <a href="{{ route('collaborators') }}">@lang('translation.collaborators')</a>
+                            <a href="{{ route('communities') }}">@lang('translation.community-title')</a>
+                            <a href="{{ route('collaborators') }}">@lang('translation.partners')</a>
                         </div>
                     </li>
                     <li class="@if(str(Route::current()->getName())->contains('contact_us')) active @endif">

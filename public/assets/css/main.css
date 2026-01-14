@@ -88,6 +88,32 @@
     --menablue: #002773;
     --menaorange: #f1c268;
     --menabg: #fafafb;
+    --text-dark: #333333;
+}
+
+/* Global body text color for readability */
+body {
+    color: var(--text-dark);
+}
+
+/* Ensure paragraphs and general text content have proper dark color */
+p, span, li, td, th, label, div {
+    color: inherit;
+}
+
+/* Override any white text on white backgrounds */
+.container p,
+.container span:not(.checkmark):not(.checkmark:after),
+.container li,
+.text-content,
+.text-content p,
+article p,
+article span,
+section p,
+section span,
+main p,
+main span {
+    color: var(--text-dark);
 }
 
 h1,

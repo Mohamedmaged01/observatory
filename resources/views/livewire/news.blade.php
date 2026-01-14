@@ -37,14 +37,24 @@
             @foreach($blogs as $index => $n)
                 <div class="post-container lazy-item">
                     <div class="post-loop-events position-relative overflow-hidden">
-                        <img class="post-img" src="{{Storage::url($n->image)}}">
+                        @if(isset($n->is_static) && $n->is_static)
+                            <img class="post-img" src="/{{$n->image}}" alt="{{$n->title}}">
+                        @else
+                            <img class="post-img" src="{{Storage::url($n->image)}}">
+                        @endif
                         <div class="post-content" lang="en">
                             <h4 style='color:#FFF;' class='slide_title'>{{$n->title}}</h4>
                             <p style='color:#FFF;' class='slide_description'>{{$n->description}}</p>
 
-                            <a href='{{route("blogs.single", ["id" => $n->id])}}'>
-                                <button class='btn learn_more'><i class="fas fa-plus"></i> Learn More</button>
-                            </a>
+                            @if(isset($n->is_static) && $n->is_static)
+                                <a href='{{route("news.rai-cup")}}'>
+                                    <button class='btn learn_more'><i class="fas fa-plus"></i> Learn More</button>
+                                </a>
+                            @else
+                                <a href='{{route("blogs.single", ["id" => $n->id])}}'>
+                                    <button class='btn learn_more'><i class="fas fa-plus"></i> Learn More</button>
+                                </a>
+                            @endif
                         </div>
 
                         <div class="overlay-1"></div>

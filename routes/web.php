@@ -58,6 +58,7 @@ Route::group([
     Route::get('/podcasts', [HomeController::class, 'podcasts'])->name('podcasts');
 
     Route::get('/news/html_list', [NewsController::class, 'js_list_view'])->name('news.html_list');
+    Route::get('/news/rai-cup-2026', [NewsController::class, 'raiCup'])->name('news.rai-cup');
     Route::get('/news/{id}', [NewsController::class, 'single'])->name('news');
     Route::get('/events/{id}', [EventsController::class, 'single'])->name('events.single');
 
