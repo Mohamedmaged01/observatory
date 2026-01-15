@@ -18,8 +18,8 @@
                           <img class="post-img" src="{{Storage::url($n->image)}}">
                           @if($index % 3 === 2)
                               <div class="research-border">
-                                  <p>Platform Work MENA</p>
-                                  <p class="sub-title">(PW-MENA)</p>
+                                  <p>Future of Work MENA</p>
+                                  <p class="sub-title">(Future of Work)</p>
                               </div>
                           @endif
                           <div class="post-content " lang="en">
