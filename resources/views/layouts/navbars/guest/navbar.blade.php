@@ -856,11 +856,9 @@
                         <a href="{{ route('ai_indices') }}">@lang('translation.ai-indices', ['default' => 'AI Indices'])</a>
                     </li>
                     <li class="@if(str(Route::current()->getName())->contains('pw_mena')) active @endif">
-                        <a href="{{ route('pw_mena') }}">@lang('translation.pw-mena', ['default' => 'PW-MENA'])</a>
+                        <a href="{{ route('pw_mena') }}">Future of Works MENA</a>
                     </li>
-                    <li class="@if(str(Route::current()->getName())->contains('news')) active @endif">
-                        <a href="{{ route('news.index') }}">@lang('translation.news', ['default' => 'News'])</a>
-                    </li>
+                    {{-- News tab hidden --}}
                     <li class="dropdown @if(str(Route::current()->getName())->contains('community')) active @endif">
                         <a href="{{ route('community') }}" class="dropdown-toggle">@lang('translation.community')</a>
                         <div class="dropdown-menu">
@@ -909,12 +907,9 @@
                     <a href="{{ route('ai_indices') }}">@lang('translation.ai-indices', ['default' => 'AI Indices'])</a>
                 </li>
                 <li class="@if(str(Route::current()->getName())->contains('pw_mena')) active @endif">
-                    <a href="{{ route('pw_mena') }}">@lang('translation.pw-mena', ['default' => 'PW-MENA'])</a>
+                    <a href="{{ route('pw_mena') }}">Future of Works MENA</a>
                 </li>
-                {{--
-                <li class="@if(str(Route::current()->getName())->contains('news')) active @endif">
-                    <a href="{{ route('news.index') }}">@lang('translation.news', ['default' => 'News'])</a>
-                </li>
+                {{-- News tab hidden --}}
                 <li class="@if(str(Route::current()->getName())->contains('community')) active @endif">
                     <a href="{{ route('community') }}">@lang('translation.community')</a>
                 </li>
@@ -1099,3 +1094,5 @@
     </script>
 </body>
 </html>
+
+
