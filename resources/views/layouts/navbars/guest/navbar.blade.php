@@ -911,6 +911,7 @@
                 <li class="@if(str(Route::current()->getName())->contains('pw_mena')) active @endif">
                     <a href="{{ route('pw_mena') }}">@lang('translation.pw-mena', ['default' => 'PW-MENA'])</a>
                 </li>
+                {{--
                 <li class="@if(str(Route::current()->getName())->contains('news')) active @endif">
                     <a href="{{ route('news.index') }}">@lang('translation.news', ['default' => 'News'])</a>
                 </li>
