@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RegionalController;
 use App\Http\Controllers\NewWorkController;
+use App\Http\Controllers\PwMenaController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -49,11 +50,16 @@ Route::group([
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/coming-soon', [HomeController::class, 'comingSoon'])->name('coming-soon');
     Route::get('/search', [HomeController::class, 'search'])->name('search');
+    Route::get('/ai-indices', [HomeController::class, 'aiIndices'])->name('ai_indices');
+    Route::post('/subscribe', [HomeController::class, 'subscribe'])->name('subscribe');
 
     Route::get('/news_events', [HomeController::class, 'news_events'])->name('news_events');
-    Route::get('/news', [NewsController::class, 'news'])->name('news-all');
+    Route::get('/news', [NewsController::class, 'news'])->name('news.index');
+    Route::get('/podcasts', [HomeController::class, 'podcasts'])->name('podcasts');
 
     Route::get('/news/html_list', [NewsController::class, 'js_list_view'])->name('news.html_list');
+    Route::get('/news/rai-cup-2026', function() { return view('frontend.rai-cup'); })->name('news.rai-cup');
+    Route::get('/safe-ai-children', function() { return view('frontend.coming-soon'); })->name('safe_ai_children');
     Route::get('/news/{id}', [NewsController::class, 'single'])->name('news');
     Route::get('/events/{id}', [EventsController::class, 'single'])->name('events.single');
 
@@ -71,11 +77,14 @@ Route::group([
     
     // Add the new work blogs single view route
     Route::get('/new_work/blogs/{id}', [NewWorkController::class, 'newWorkBlogSingle'])->name('new-work-blogs.single');
+    
+    // Future of Work MENA route
+    Route::get('/pw-mena', [PwMenaController::class, 'index'])->name('pw_mena');
+    
     Route::get('/regional', [RegionalController::class, 'index'])->name('regional');
     Route::get('/regional/html_list', [RegionalController::class, 'js_list_view'])->name('regional.html_list');
     Route::get('/regional/{id}', [RegionalController::class, 'country'])->name('regional.country');
     Route::get('/regional-repository/{id}', [RegionalController::class, 'single'])->name('repo.single');
-    Route::get('/data_repo', [RegionalController::class, 'dataRepo'])->name('data_repo');
 
     Route::get('/additional-resources/{id}', [AdditionalResourcesController::class, 'single'])->name('resources.single');
 
@@ -105,3 +114,4 @@ Route::group([
 
     });
 });
+
