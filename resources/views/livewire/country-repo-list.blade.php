@@ -2,28 +2,33 @@
     @if(count($repos) > 0)
         <div class='row my-3 my-lg-5'>
             <div class='col-lg-12'>
-                <h3 @if(LaravelLocalization::getCurrentLocale() === 'ar') dir="rtl"
-                    @endif hreflang="{{ getLang() }}">@lang('translation.additional-resources')</h3>
-                
+                <h3 @if(LaravelLocalization::getCurrentLocale() === 'ar') dir="rtl" @endif hreflang="{{ getLang() }}">
+                    @lang('translation.additional-resources')</h3>
+
                 <div class="lazy-items-container" style='
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    padding-bottom: 20px;'>
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        padding-bottom: 20px;'>
 
                     @foreach($repos as $index => $r)
+                        @php
+                            $cardUrl = $r->data_link ?: route('repo.single', ['id' => $r->id]);
+                            $isExternal = !empty($r->data_link);
+                        @endphp
                         <div class="post-container lazy-item">
                             <div class="post-loop position-relative overflow-hidden">
                                 <img class="post-img" src="{{Storage::url($r->image)}}">
 
                                 <div class="post-content" lang="en">
                                     <h4 style='color:#FFF;' class='slide_title'>
-                                        <a href='{{$r->data_link}}'>{{$r->title}}</a>
+                                        <a href='{{$cardUrl}}' @if($isExternal) target="_blank" rel="noopener noreferrer"
+                                        @endif>{{$r->title}}</a>
                                     </h4>
                                     <p style='color:#FFF;' class='slide_description'>{{$r->description}}</p>
 
-                                    <a href='{{$r->data_link}}'>
+                                    <a href='{{$cardUrl}}' @if($isExternal) target="_blank" rel="noopener noreferrer" @endif>
                                         <button class='btn learn_more'>
                                             <i class="fas fa-plus"></i> Read More
                                         </button>
@@ -39,12 +44,8 @@
                 <!-- Load More Button -->
                 @if($hasMorePages)
                     <div class="load-more-container">
-                        <button 
-                            class="btn-load-more"
-                            wire:click="loadMore"
-                            wire:loading.attr="disabled"
-                            wire:loading.class="loading"
-                        >
+                        <button class="btn-load-more" wire:click="loadMore" wire:loading.attr="disabled"
+                            wire:loading.class="loading">
                             <span wire:loading.remove wire:target="loadMore">Load More</span>
                             <span wire:loading wire:target="loadMore" class="loading-state">
                                 <span class="spinner"></span>

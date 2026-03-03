@@ -1,8 +1,11 @@
 @foreach($repos as $r)
+        @php
+            $cardUrl = $r->data_link ?: route('repo.single', ['id' => $r->id]);
+            $isExternal = !empty($r->data_link);
+        @endphp
         <div class='row' style='margin-bottom:30px;'>
             <div class='col-lg-3'>
-{{--                <a href="{{route('resources.single',$r->id)}}">--}}
-                <a href="{{$r->data_link}}">
+                <a href="{{$cardUrl}}" @if($isExternal) target="_blank" rel="noopener noreferrer" @endif>
                     <img class="event_img" src = '{{Storage::url($r->image)}}' width='100%;'> </a>
             </div>
             <div class='col-lg-9 d-flex justify-content-between flex-column'>
